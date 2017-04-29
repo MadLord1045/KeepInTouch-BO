@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<style id="jsbin-css">
+h1{
+  text-align: center;
+}
+</style>
+</head>
+<body onload="">
+      <h1><%= res.question %> </h1>
+      <div class="image">
+        <img src="<%= path %>images/orig/<%= res.url_image %>" alt="">
+
+      </div>
+      <ul class="reponses">
+        <% 
+          var reponses=res.responses;
+          for(var i in reponses)
+          {
+            %>
+              <li> <%= reponses[i] %></li>
+            <%
+          }
+        
+        %>
+        <li></li>
+      </ul>
+  </body>
+</html>
