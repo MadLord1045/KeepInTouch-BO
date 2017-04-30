@@ -15,6 +15,9 @@
 
         <div id="top" class="top">
             <h2>KeepInTouch</h2>
+            <ul>
+                <li> <a href="logout">D&eacute;connection</a> </li>
+            </ul>
         </div>
         <div>
             <div id="content" class="left_content">
@@ -27,8 +30,10 @@
                 <div class="titre">Num&eacute;ro de t&eacute;l&eacute;phone : </div> <div class="contenu"> <%=data.contact.num %></div> <br />
                 <div class="titre">Mail : </div> <div class="contenu"> <%=data.contact.mail %></div> <br />
                 </div>
-                <div>Veuillez insérer le <b>texte</b> suivant dans vos tags synchronisés :
-                    <h2 style="border:1px solid black;border-radius: 20px;width:200px;padding:10px;display:inline-block;"><%=data.user.contact %></h2>
+                <div>Veuillez insérer le <b>texte</b> suivant dans vos tags synchronisés : <br /> <br />
+                    <h2 style="border:1px solid black;border-radius: 20px;width:200px;padding:10px;display:inline-block;">
+                       
+                        <%=data.user.contact %></h2>
                 </div>
                 <p>  </p>
             </div>
