@@ -1,0 +1,33 @@
+#left{
+    display: none;
+    
+}
+
+.left_content{
+    margin-left: 50% !important;
+  transform: translate(-50%,0);
+}
+
+
+input {
+  display: block;
+  margin-left: 50% !important;
+  transform: translate(-50%,0);
+}
+
+.left_content *{
+    text-align: center;
+    margin: 15px;
+}
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 29, 2017, 3:54:43 PM
+    Author     : madlord
+*/
+

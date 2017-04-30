@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link  rel="stylesheet" href="/css/default.css"/>
+        <link  rel="stylesheet" href="/css/cssLayout.css"/>
+        <link  rel="stylesheet" href="/css/login.css"/>
+
+        <title>KeepInTouch : connection</title>
+    </head>
+    <style>
+        .left_content * {
+            text-align: center;
+            margin: 5px;
+        }
+
+        input[type="text"]{
+            text-align: left;
+        }
+    </style>
+
+    <body>
+
+
+        <div id="top" class="top">
+            <h2>KeepInTouch</h2>
+        </div>
+        <div>
+            <div id="content" class="left_content">
+
+                <form action="login" method="POST">
+                    <label for="login">Rentrez vos informations personnelles</label> <br /><br />
+                    <input type="text" id="login" name="login" placeholder="* Nom d'utilisateur" required />
+                    <input type="text" id="mdp" name="mdp" placeholder="* Mot de passe" required />
+                    <input type="text" id="nom-contact" name="nom-contact" placeholder="* Votre nom de contact" required />
+                    <input type="text" id="telephone" name="telephone" placeholder="* T&eacute;l&eacute;phone" required />
+                    <input type="text" id="mail" name="mail" placeholder="&nbsp;&nbsp;&nbsp;email"/>
+                    <input type="text" id="societe" name="societe" placeholder="&nbsp;&nbsp;&nbsp;Soci&eacute;t&eacute;"/>
+                    <br />
+                    <input type="submit" value="S'enregistrer'" />
+                </form>
+
+            </div>
+        </div>
+    </body>
+
+</html>

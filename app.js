@@ -1,85 +1,104 @@
 var express = require("express");
 var app = express();
-app.set('port',(process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000));
 var bodyParser = require('body-parser'); // Charge le middleware de gestion des parametres
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 /*var session = require('cookie-session'); // Charge le middleware de sessions
 
 var ejs = require('ejs');
 //*/
-var users=[];
-users[0]={"login": "admin", "passwd" : "admin"} ;
+var users = [];
+users[0] = { "login": "admin", "mdp": "admin" };
+users[1] = { "login": "test", "mdp": "test", "contact": "1" };
 
-var movies=[];
-var path="http://localhost:3700/";
 
-var contacts={
-	"00261348723658":{
-		"nom":"ASSANY",
-		"prenom":"Ylias",
-		"mail":"ya.assany@gmail.com",
-		"num":"00261348723658"
-		
+
+var path = "http://localhost:5000/";
+
+var contacts = {
+
+	"1": {
+		"nom": "ASSANY",
+		"prenom": "Ylias",
+		"mail": "ya.assany@gmail.com",
+		"num": "00261348723658"
+
 	},
-	"00261348723659":{
-		"nom":"ASSANY",
-		"prenom":"Yvan",
-		"mail":"ya.assany@gmail.com",
-		"num":"00261348723659"
+
+	"00261348723658": {
+		"nom": "ASSANY",
+		"prenom": "Ylias",
+		"mail": "ya.assany@gmail.com",
+		"num": "00261348723658"
+
+	},
+	"00261348723659": {
+		"nom": "ASSANY",
+		"prenom": "Yvan",
+		"mail": "ya.assany@gmail.com",
+		"num": "00261348723659"
 	}
 };
 
-var questions={
-	"1":{
-		"question":"Qui suis-je?",
-		"url_image":"1.jpg",
-		"author":"MadLord",
-		"responses":{
-			"0":"Roshan",
-			"1":"John Travolta"
-		},
-		"ind_reponse":"",
-
-	},
-	"2":{
-		"question":"Qui suis-je?",
-		"url_image":"2.jpg",
-		"author":"MadLord",
-		"responses":{
-			"0":"Roshan",
-			"1":"John Travolta"
-		},
-		"ind_reponse":"0",
-
-	}
-}
 
 app.use(urlencodedParser);
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
 
 
-app.get("/", function(req, res){
-	res.render("error.ejs")
+app.get("/", function (req, res) {
+	res.render("index.ejs", { "data": {} });
 });//*/
-app.get("/contact/:id", function(req, res){
-	var id=req.params.id;
-	if(id==null || contacts[id]==null)
-		res.json({error:"ce num??ro n'est pas enregistr??"});
+
+app.get("/login",(req,res)=>{
+	res.render("index.ejs", { "data": {} });
+})
+
+app.post("/login", (req, res) => {
+	var login = (req.body.login) ? req.body.login : "";
+	var mdp = req.body.mdp;
+	users.forEach((item, index, any) => {
+		if (item.login == login && item.mdp == mdp) {
+			data={"user":item,"contact":contacts[item.contact]}
+			res.render("profile.ejs",{"data":data});
+		}
+
+		else if (index == users.length - 1) {
+			res.render("index.ejs", { "data": { "error": "Combinaison login / mot de passe invalide", "login": login } })
+		}
+	});
+
+
+
+})
+
+app.get("/register", (req, res) => {
+	res.render("register.ejs");
+})
+
+app.post("/register", (req, res) => {
+	res.render("profile.ejs");
+})
+app.get("/contact/:id", function (req, res) {
+	var id = req.params.id;
+	if (id == null || contacts[id] == null)
+		res.json({ error: "ce num??ro n'est pas enregistr??" });
 	else {
-		res.json({contact:contacts[id]});
+		res.json({ contact: contacts[id] });
 	}
 });
 
-app.get("/list", function(req, res){
+
+
+app.get("/list", function (req, res) {
 	res.json(questions);
 });
-app.post("/question",function(req,res){
-	var id=questions;
-	var question=body.params.id;
-	var author=body.params.id;
-	var reponses=body.params.id;
-	var url_image=body.params.id;
-	var ind_reponse=body.params.id;
+app.post("/question", function (req, res) {
+	var id = questions;
+	var question = body.params.id;
+	var author = body.params.id;
+	var reponses = body.params.id;
+	var url_image = body.params.id;
+	var ind_reponse = body.params.id;
 
 
 });
@@ -122,6 +141,7 @@ app.get("/list",function(req,res){
 });
 //*/
 
-app.listen(app.get('port'),function() {
-  console.log('Node app is running on port', app.get('port'));
+app.listen(app.get('port'), function () {
+	console.log('Node app is running on port', app.get('port'));
+	console.log('link: http://localhost:5000/');
 });

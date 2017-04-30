@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<meta name="robots" content="noindex">
 <html>
-<head>
-<meta charset=utf-8 />
-<title>JS Bin</title>
-<style id="jsbin-css">
-h1{
-  text-align: center;
-}
-</style>
-</head>
-<body onload="">
-      <h1><%= res.question %> </h1>
-      <div class="image">
-        <img src="<%= path %>images/orig/<%= res.url_image %>" alt="">
 
-      </div>
-      <ul class="reponses">
-        <% 
-          var reponses=res.responses;
-          for(var i in reponses)
-          {
-            %>
-              <li> <%= reponses[i] %></li>
-            <%
-          }
-        
-        %>
-        <li></li>
-      </ul>
-  </body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link  rel="stylesheet" href="/css/default.css"/>
+        <link  rel="stylesheet" href="/css/cssLayout.css"/>
+        <link  rel="stylesheet" href="/css/login.css"/>
+
+        <title>KeepInTouch : connection</title>
+    </head>
+
+    <body>
+
+
+        <div id="top" class="top">
+            <h2>KeepInTouch</h2>
+        </div>
+        <div>
+            <div id="content" class="left_content">
+
+                <form action="login" method="POST">
+                    <label for="login">Veuillez vous identifier</label>
+                    <input type="text" id="login" name="login" placeholder="Nom d'utilisateur"
+                    value="<%=data.login%>"
+                     required />
+                    <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required />
+                    
+                    <p style="color:red"><%=data.error %></p>
+                    
+                    <input type="submit" value="Se connecter" />
+                </form>
+
+                <a href="register"> Cr&eacute;er un couveau compte</a>
+            </div>
+        </div>
+    </body>
+
 </html>
